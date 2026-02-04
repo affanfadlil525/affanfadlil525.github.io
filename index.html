@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Kementerian Haji dan Umrah</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+    <div class="container">
+        <div class="logo">
+            <span>Kementerian Haji dan Umrah</span>
+        </div>
+        <nav>
+            <a href="#home">Beranda</a>
+            <a href="#layanan">Layanan</a>
+            <a href="#cek">Cek Porsi</a>
+            <a href="#berita">Berita</a>
+        </nav>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+    <div class="container">
+        <h1>Melayani Jamaah dengan Aman dan Transparan</h1>
+        <p>Portal resmi informasi Haji dan Umrah Republik Indonesia</p>
+        <a href="#cek" class="btn-primary">Cek Nomor Porsi</a>
+    </div>
+</section>
+
+<!-- LAYANAN -->
+<section class="services" id="layanan">
+    <div class="container">
+        <h2>Layanan Utama</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Pendaftaran Haji</h3>
+                <p>Informasi dan alur pendaftaran haji reguler.</p>
+            </div>
+            <div class="card">
+                <h3>Estimasi Keberangkatan</h3>
+                <p>Pengecekan estimasi keberangkatan jamaah.</p>
+            </div>
+            <div class="card">
+                <h3>Layanan Umrah</h3>
+                <p>Regulasi dan kebijakan umrah.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CEK PORSI -->
+<section class="cek" id="cek">
+    <div class="container">
+        <h2>Cek Estimasi Keberangkatan Haji</h2>
+
+        <form id="cekForm">
+            <input type="text" id="nomorPorsi" placeholder="Masukkan Nomor Porsi" required>
+            <button type="submit" class="btn-primary">Cek</button>
+        </form>
+
+        <div id="hasil"></div>
+    </div>
+</section>
+
+<!-- BERITA -->
+<section class="news" id="berita">
+    <div class="container">
+        <h2>Berita Terkini</h2>
+        <ul id="listBerita"></ul>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <p>© 2026 Kementerian Haji dan Umrah Republik Indonesia</p>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
