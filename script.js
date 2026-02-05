@@ -1,99 +1,63 @@
-/* ======================
-   DATA (BISA DARI API)
-====================== */
-const typingTexts = [
-    "Web Developer",
-    "Pranata Komputer",
-    "Educator"
-];
-
-const skillsData = [
-    { name: "HTML & CSS", level: 90 },
-    { name: "JavaScript", level: 75 },
-    { name: "Laravel", level: 80 }
-];
-
-const portfolioData = [
-    { title: "Web Barbershop", desc: "Booking online berbasis Laravel" },
-    { title: "Bot Haji", desc: "Estimasi keberangkatan via WhatsApp" },
-    { title: "Landing Page", desc: "Company profile modern" }
-];
-
-/* ======================
-   DARK MODE DINAMIS
-====================== */
+/* ===== DARK MODE AUTO ===== */
 const root = document.documentElement;
-const toggle = document.getElementById("darkToggle");
+const saved = localStorage.getItem("theme");
 
-const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-const savedTheme = localStorage.getItem("theme");
-
-if (savedTheme) {
-    root.dataset.theme = savedTheme;
-} else if (systemDark) {
+if (saved) root.dataset.theme = saved;
+else if (window.matchMedia("(prefers-color-scheme: dark)").matches)
     root.dataset.theme = "dark";
-}
 
-toggle.onclick = () => {
-    const newTheme = root.dataset.theme === "dark" ? "light" : "dark";
-    root.dataset.theme = newTheme;
-    localStorage.setItem("theme", newTheme);
+document.getElementById("toggle").onclick = () => {
+    const t = root.dataset.theme === "dark" ? "light" : "dark";
+    root.dataset.theme = t;
+    localStorage.setItem("theme", t);
 };
 
-/* ======================
-   TYPING EFFECT DINAMIS
-====================== */
-let textIndex = 0, charIndex = 0;
-const typingEl = document.getElementById("typing");
+/* ===== TYPING EFFECT ===== */
+const words = ["Web Developer", "Pranata Komputer", "IT Educator"];
+let i=0,j=0;
+const el=document.getElementById("typing");
 
-function typingLoop() {
-    if (charIndex < typingTexts[textIndex].length) {
-        typingEl.textContent += typingTexts[textIndex][charIndex++];
-    } else {
-        setTimeout(() => eraseLoop(), 1500);
-        return;
-    }
-    setTimeout(typingLoop, 100);
+function type(){
+    if(j<words[i].length){
+        el.textContent+=words[i][j++];
+        setTimeout(type,80);
+    } else setTimeout(erase,1500);
 }
 
-function eraseLoop() {
-    if (charIndex > 0) {
-        typingEl.textContent =
-            typingTexts[textIndex].slice(0, --charIndex);
-        setTimeout(eraseLoop, 60);
-    } else {
-        textIndex = (textIndex + 1) % typingTexts.length;
-        setTimeout(typingLoop, 500);
+function erase(){
+    if(j>0){
+        el.textContent=words[i].slice(0,--j);
+        setTimeout(erase,40);
+    } else{
+        i=(i+1)%words.length;
+        setTimeout(type,500);
     }
 }
+type();
 
-typingLoop();
+/* ===== PROJECT DATA DINAMIS ===== */
+const projects = [
+    {
+        title:"Web Barbershop Laravel",
+        desc:"Booking online + multi user system."
+    },
+    {
+        title:"WhatsApp Bot Haji",
+        desc:"Cek estimasi keberangkatan otomatis."
+    },
+    {
+        title:"Landing Page Instansi",
+        desc:"Company profile modern responsif."
+    }
+];
 
-/* ======================
-   RENDER SKILLS
-====================== */
-const skillsEl = document.getElementById("skills");
+const container = document.getElementById("projects");
 
-skillsData.forEach(skill => {
-    const div = document.createElement("div");
-    div.className = "skill";
-    div.innerHTML = `
-        <span>${skill.name}</span>
-        <div class="bar">
-            <div class="fill" style="width:${skill.level}%"></div>
-        </div>
-    `;
-    skillsEl.appendChild(div);
-});
+projects.forEach((p,idx)=>{
+    const card=document.createElement("div");
+    card.className="card";
+    card.innerHTML=`<h3>${p.title}</h3><p>${p.desc}</p>`;
+    container.appendChild(card);
 
-/* ======================
-   RENDER PORTFOLIO
-====================== */
-const portEl = document.getElementById("portfolio");
-
-portfolioData.forEach(item => {
-    const card = document.createElement("div");
-    card.className = "card";
-    card.innerHTML = `<h3>${item.title}</h3><p>${item.desc}</p>`;
-    portEl.appendChild(card);
+    setTimeout(()=>card.classList.add("show"), idx*200);
 });
