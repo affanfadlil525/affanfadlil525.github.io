@@ -29,7 +29,7 @@ document.querySelectorAll('.nav-menu a').forEach(link => {
 });
 
 // 2. TYPING EFFECT PADA HERO
-const text = "Pelayanan Haji & Umrah Kutai Barat";
+const text = "Kementerian Haji & Umrah Kab. Kutai Barat";
 let i = 0;
 function typeWriter() {
     if (i < text.length) {
@@ -104,3 +104,4 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // Run typewriter on load
 window.onload = typeWriter;
+
