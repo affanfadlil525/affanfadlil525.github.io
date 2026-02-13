@@ -74,8 +74,60 @@ nav.scrolled .nav-menu a { color: var(--dark); }
 
 footer { padding: 50px; text-align: center; background: #0a0a0a; color: #666; font-size: 14px; }
 
+/* --- RESPONSIVE MOBILE OPTIMIZATION --- */
 @media (max-width: 768px) {
-    .hero-action-wrapper { flex-direction: column; }
-    .action-divider { display: none; }
-    .nav-menu { display: none; }
+    /* Mencegah menu hilang di HP */
+    .nav-container {
+        flex-direction: column; /* Logo di atas, menu di bawah */
+        gap: 10px;
+        padding: 10px 15px;
+    }
+
+    .nav-menu {
+        display: flex !important; /* Memastikan menu tidak hidden */
+        width: 100%;
+        justify-content: center;
+        overflow-x: auto; /* Bisa digeser kiri-kanan jika layar sangat kecil */
+        white-space: nowrap; /* Mencegah teks turun ke bawah */
+        padding-bottom: 5px;
+        scrollbar-width: none; /* Sembunyikan scrollbar di Firefox */
+        -webkit-overflow-scrolling: touch; /* Swipe halus di iPhone */
+    }
+
+    /* Menghilangkan scrollbar di Chrome/Safari agar rapi */
+    .nav-menu::-webkit-scrollbar {
+        display: none;
+    }
+
+    .nav-menu a {
+        margin: 0 10px; /* Jarak antar link lebih rapat di HP */
+        font-size: 12px; /* Ukuran font sedikit lebih kecil agar muat */
+        flex-shrink: 0; /* Mencegah link gepeng */
+    }
+
+    /* Penyesuaian Hero Section di HP */
+    .hero-action-wrapper {
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    .action-card {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .action-divider {
+        display: none; /* Sembunyikan tulisan 'ATAU' agar tidak penuh */
+    }
+
+    .hero h1 {
+        font-size: 28px; /* Ukuran judul lebih proporsional di HP */
+    }
+
+    .section {
+        padding: 60px 20px; /* Padding section lebih kecil di HP */
+    }
 }
+
