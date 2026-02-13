@@ -3,29 +3,31 @@
  * Final Refined Script
  */
 
-// 1. HAMBURGER MENU TOGGLE & CLICK-OUTSIDE
 const hamburger = document.getElementById('hamburger');
 const navMenu = document.getElementById('nav-menu');
 
-hamburger.addEventListener('click', (e) => {
-    e.stopPropagation();
+// Membuka & Menutup Menu Mobile
+hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('active');
     navMenu.classList.toggle('active');
 });
 
-document.addEventListener('click', (e) => {
-    if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('active');
-    }
-});
-
-// Tutup menu saat link diklik (Mobile UX)
+// Tutup menu saat link diklik (Agar tidak menutupi saat scroll ke section)
 document.querySelectorAll('.nav-menu a').forEach(link => {
     link.addEventListener('click', () => {
         hamburger.classList.remove('active');
         navMenu.classList.remove('active');
     });
+});
+
+// Efek Scroll Navbar
+window.addEventListener('scroll', () => {
+    const navbar = document.getElementById('navbar');
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
 });
 
 // 2. TYPING EFFECT PADA HERO
@@ -104,3 +106,4 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // Run typewriter on load
 window.onload = typeWriter;
+
