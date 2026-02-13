@@ -1,5 +1,5 @@
 // 1. Efek Mengetik
-const text = "Pelayanan Haji & Umrah Kutai Barat";
+const text = "Kementerian Haji & Umrah Kab. Kutai Barat";
 let i = 0;
 function typeWriter() {
     if (i < text.length) {
@@ -85,4 +85,5 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 window.onload = typeWriter;
+
 
