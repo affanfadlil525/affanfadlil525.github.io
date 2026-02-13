@@ -11,61 +11,111 @@
 html { scroll-behavior: smooth; }
 body { background: var(--white); color: var(--dark); line-height: 1.6; }
 
-/* NAVBAR */
-nav { position: fixed; top: 0; width: 100%; z-index: 1000; padding: 25px 0; transition: var(--transition); }
-nav.scrolled { background: rgba(255, 255, 255, 0.98); padding: 15px 0; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
-
-.nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 30px; }
-.logo { font-size: 22px; font-weight: 800; color: var(--white); text-decoration: none; z-index: 1001; }
-.logo span { color: var(--gold); }
-nav.scrolled .logo { color: var(--dark); }
-
-.nav-menu a { color: var(--white); text-decoration: none; margin-left: 30px; font-weight: 600; font-size: 14px; transition: 0.3s; }
-nav.scrolled .nav-menu a { color: var(--dark); }
-.nav-menu a:hover { color: var(--gold) !important; }
-
-/* HAMBURGER STYLE */
-.hamburger { display: none; cursor: pointer; flex-direction: column; gap: 6px; z-index: 1001; }
-.hamburger span { width: 28px; height: 3px; background: var(--white); border-radius: 2px; transition: 0.3s; }
-nav.scrolled .hamburger span { background: var(--dark); }
-
-/* HAMBURGER ANIMATION */
-.hamburger.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
-.hamburger.active span:nth-child(2) { opacity: 0; }
-.hamburger.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
-
-/* RESPONSIVE NAV */
-@media (max-width: 768px) {
-    .hamburger { display: flex; }
-    
-    .nav-menu {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 70%;
-        height: 100vh;
-        background: var(--white);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        transition: 0.5s;
-        box-shadow: -10px 0 30px rgba(0,0,0,0.1);
-    }
-
-    .nav-menu.active { right: 0; }
-    
-    .nav-menu a {
-        color: var(--dark) !important;
-        margin: 20px 0;
-        font-size: 18px;
-    }
-
-    .hero h1 { font-size: 32px; }
-    .hero-action-wrapper { flex-direction: column; gap: 15px; }
-    .action-divider { display: none; }
+/* --- CSS NAVBAR & LOGO --- */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 20px 0;
+    transition: all 0.4s ease;
 }
 
+nav.scrolled {
+    background: rgba(255, 255, 255, 0.98);
+    padding: 12px 0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between; /* Memisahkan logo dan hamburger */
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    max-width: 80%; /* Membatasi agar tidak menabrak hamburger */
+}
+
+.logo-img {
+    height: 42px;
+    width: auto;
+    flex-shrink: 0; /* Mencegah gambar logo gepeng */
+}
+
+.logo-text {
+    color: white;
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1.2;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+}
+
+.logo-text span {
+    display: block;
+    color: var(--gold); /* Gunakan variabel warna emas Anda */
+    font-size: 10px;
+    font-weight: 400;
+}
+
+nav.scrolled .logo-text {
+    color: #1a1a1a;
+}
+
+/* --- MOBILE RESPONSIVE FIX --- */
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 0 15px;
+    }
+
+    .logo-img {
+        height: 32px; /* Perkecil logo di HP */
+    }
+
+    .logo-text {
+        font-size: 11px; /* Perkecil teks baris pertama di HP */
+        max-width: 180px; /* Batasi lebar teks agar tidak menabrak ikon menu */
+    }
+
+    .logo-text span {
+        font-size: 8px; /* Perkecil teks baris kedua di HP */
+    }
+
+    /* Memastikan hamburger tetap di posisinya */
+    .hamburger {
+        display: flex;
+        flex-shrink: 0;
+        margin-left: 10px;
+    }
+}
+
+/* HAMBURGER STYLE (Standard) */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: white;
+    transition: 0.3s;
+}
+
+nav.scrolled .hamburger span {
+    background: #1a1a1a;
+}
 /* --- (Sisanya Sesuai Codingan Sebelumnya) --- */
 .hero { position: relative; height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; color: var(--white); background: url('https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?q=80&w=2070&auto=format&fit=crop') center/cover fixed; }
 .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.4), rgba(0,0,0,0.8)); }
@@ -94,5 +144,6 @@ nav.scrolled .hamburger span { background: var(--dark); }
 .fade-in { opacity: 0; transform: translateY(30px); transition: 0.8s all ease; }
 .fade-in.appear { opacity: 1; transform: translateY(0); }
 footer { padding: 40px; text-align: center; background: #0a0a0a; color: #666; }
+
 
 
