@@ -9,6 +9,46 @@ function typeWriter() {
     }
 }
 
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('nav-menu');
+
+// Toggle Menu
+hamburger.addEventListener('click', (e) => {
+    e.stopPropagation(); // Mencegah bubbling
+    hamburger.classList.toggle('active');
+    navMenu.classList.toggle('active');
+});
+
+// Tutup menu saat klik di luar (Penting untuk HP)
+document.addEventListener('click', (e) => {
+    if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+    }
+});
+
+// Highlight menu aktif saat scroll (Membuat web terasa "hidup")
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('.nav-menu a');
+
+window.addEventListener('scroll', () => {
+    let current = "";
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= (sectionTop - 150)) {
+            current = section.getAttribute('id');
+        }
+    });
+
+    navLinks.forEach(a => {
+        a.classList.remove('active-link');
+        if (a.getAttribute('href').includes(current)) {
+            a.classList.add('active-link');
+        }
+    });
+});
+
 // 2. Scroll Navbar
 window.addEventListener("scroll", () => {
     const nav = document.getElementById("navbar");
@@ -45,3 +85,4 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 window.onload = typeWriter;
+
