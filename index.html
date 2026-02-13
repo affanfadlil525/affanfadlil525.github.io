@@ -1,17 +1,22 @@
+<!DOCTYPE html>
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Pelayanan Haji & Umrah | Kutai Barat</title>
+    
+    <!-- Google Fonts & Font Awesome Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <!-- NAVBAR -->
     <nav id="navbar">
         <div class="nav-container">
-            <!-- LOGO GROUP -->
             <a href="#" class="logo-wrapper">
+                <!-- Ganti URL src dengan file logo PNG transparan Anda -->
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Coat_of_arms_of_Indonesia.svg/1200px-Coat_of_arms_of_Indonesia.svg.png" alt="Logo" class="logo-img">
                 <div class="logo-text">
                     Kementerian Agama <br>
@@ -19,14 +24,13 @@
                 </div>
             </a>
 
-            <!-- TOMBOL MENU (HAMBURGER) -->
+            <!-- Hamburger Button -->
             <div class="hamburger" id="hamburger">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
 
-            <!-- MENU NAVIGASI -->
             <div class="nav-menu" id="nav-menu">
                 <a href="#daftar">Pendaftaran</a>
                 <a href="#pelimpahan">Pelimpahan</a>
@@ -35,3 +39,152 @@
             </div>
         </div>
     </nav>
+
+    <!-- HERO SECTION -->
+    <header class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="badge">Layanan Resmi Haji & Umrah</span>
+            <h1 id="typing-text"></h1>
+            <p>Wujudkan niat suci Anda menuju Baitullah dengan pelayanan yang transparan, profesional, dan amanah di Kabupaten Kutai Barat.</p>
+            
+            <div class="hero-action-wrapper">
+                <!-- Tombol Persyaratan -->
+                <a href="#daftar" class="action-card primary">
+                    <div class="action-icon"><i class="fa-solid fa-file-signature"></i></div>
+                    <div class="action-content">
+                        <span class="action-label">Prosedur Lengkap</span>
+                        <span class="action-title">Lihat Persyaratan</span>
+                    </div>
+                    <div class="action-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                </a>
+
+                <div class="action-divider">ATAU</div>
+
+                <!-- Tombol Konsultasi -->
+                <a href="#kontak" class="action-card secondary">
+                    <div class="action-icon"><i class="fa-brands fa-whatsapp"></i></div>
+                    <div class="action-content">
+                        <span class="action-label">Tanya Admin</span>
+                        <span class="action-title">Konsultasi Gratis</span>
+                    </div>
+                    <div class="action-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- PENDAFTARAN -->
+        <section id="daftar" class="section">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <span>Persyaratan</span>
+                    <h2>Pendaftaran Haji</h2>
+                </div>
+                <div class="card fade-in">
+                    <div class="grid">
+                        <ul class="list-check">
+                            <li><i class="fa-solid fa-circle-check"></i> Fotocopy KTP & Kartu Keluarga (KK)</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Akta Kelahiran / Surat Kenal Lahir</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Ijazah atau Buku Nikah</li>
+                        </ul>
+                        <ul class="list-check">
+                            <li><i class="fa-solid fa-circle-check"></i> Buku Tabungan Haji (Setoran 25 Juta)</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Pas Foto Terbaru 3x4 (10 Lembar)</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Minimal Usia 12 Tahun saat mendaftar</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PELIMPAHAN -->
+        <section id="pelimpahan" class="section bg-light">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <span>Ahli Waris</span>
+                    <h2>Pelimpahan Nomor Porsi</h2>
+                </div>
+                <div class="card fade-in">
+                    <p style="margin-bottom: 25px; color: #666;">Pelimpahan diberikan bagi jamaah yang meninggal dunia atau sakit permanen:</p>
+                    <div class="grid">
+                        <ul class="list-check">
+                            <li><i class="fa-solid fa-file-import"></i> Surat permohonan pelimpahan</li>
+                            <li><i class="fa-solid fa-file-import"></i> Akta kematian / Surat sakit permanen</li>
+                            <li><i class="fa-solid fa-file-import"></i> Bukti setoran BPIH / SPPH Asli</li>
+                        </ul>
+                        <ul class="list-check">
+                            <li><i class="fa-solid fa-file-import"></i> Surat kuasa penunjukan ahli waris</li>
+                            <li><i class="fa-solid fa-file-import"></i> KTP, KK, & Tabungan Penerima</li>
+                            <li><i class="fa-solid fa-file-import"></i> Surat Keterangan Ahli Waris</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PEMBATALAN -->
+        <section id="pembatalan" class="section">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <span>Batal Porsi</span>
+                    <h2>Pembatalan Haji</h2>
+                </div>
+                <div class="grid">
+                    <div class="card fade-in">
+                        <h3 style="margin-bottom: 20px; color: var(--gold-dark);"><i class="fa-solid fa-user-xmark"></i> Karena Meninggal</h3>
+                        <ul class="list-simple">
+                            <li>Surat permohonan pembatalan bermaterai</li>
+                            <li>Asli SPPH & Bukti Setoran Bank</li>
+                            <li>Fotocopy KTP ahli waris & KK</li>
+                            <li>Akta kematian asli dari Dukcapil</li>
+                        </ul>
+                    </div>
+                    <div class="card fade-in">
+                        <h3 style="margin-bottom: 20px; color: var(--gold-dark);"><i class="fa-solid fa-hand-dots"></i> Pembatalan Pribadi</h3>
+                        <ul class="list-simple">
+                            <li>Surat permohonan pembatalan pribadi</li>
+                            <li>Asli lembar SPPH (Kemenag)</li>
+                            <li>Asli bukti setoran porsi (Bank)</li>
+                            <li>Fotocopy Buku Tabungan aktif</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- KONTAK -->
+        <section id="kontak" class="section contact-section">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2 style="color: white;">Hubungi Kami</h2>
+                </div>
+                <div class="contact-grid">
+                    <div class="contact-card whatsapp fade-in">
+                        <div class="icon-box"><i class="fa-brands fa-whatsapp"></i></div>
+                        <h3>WhatsApp</h3>
+                        <a href="https://wa.me/6281248797139" target="_blank" class="contact-btn">Mulai Chat</a>
+                    </div>
+                    <div class="contact-card email fade-in">
+                        <div class="icon-box"><i class="fa-solid fa-envelope-open-text"></i></div>
+                        <h3>Email Resmi</h3>
+                        <a href="mailto:kutaibaratkab@haji.go.id" class="contact-btn">Kirim Email</a>
+                    </div>
+                    <div class="contact-card location fade-in">
+                        <div class="icon-box"><i class="fa-solid fa-map-location-dot"></i></div>
+                        <h3>Alamat Kantor</h3>
+                        <a href="#" class="contact-btn">Lihat Peta</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Pelayanan Haji & Umrah Kutai Barat. Seluruh Hak Cipta Dilindungi.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
