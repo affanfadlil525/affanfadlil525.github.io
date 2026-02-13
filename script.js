@@ -1,4 +1,4 @@
-// 1. Logika Hamburger Menu
+// 1. HAMBURGER MENU TOGGLE
 const hamburger = document.getElementById('hamburger');
 const navMenu = document.getElementById('nav-menu');
 
@@ -7,7 +7,7 @@ hamburger.addEventListener('click', () => {
     navMenu.classList.toggle('active');
 });
 
-// Menutup menu saat link diklik (untuk mobile)
+// Tutup menu saat link diklik
 document.querySelectorAll('.nav-menu a').forEach(link => {
     link.addEventListener('click', () => {
         hamburger.classList.remove('active');
@@ -15,8 +15,8 @@ document.querySelectorAll('.nav-menu a').forEach(link => {
     });
 });
 
-// 2. Efek Mengetik
-const text = "Kementerian Haji & Umrah Kabupaten Kutai Barat";
+// 2. TYPING EFFECT
+const text = "Pelayanan Haji & Umrah Kutai Barat";
 let i = 0;
 function typeWriter() {
     if (i < text.length) {
@@ -26,7 +26,7 @@ function typeWriter() {
     }
 }
 
-// 3. Scroll Navbar
+// 3. NAVBAR SCROLL EFFECT
 window.addEventListener("scroll", () => {
     const nav = document.getElementById("navbar");
     if (window.scrollY > 50) {
@@ -36,7 +36,7 @@ window.addEventListener("scroll", () => {
     }
 });
 
-// 4. Reveal Animation
+// 4. REVEAL ANIMATION (INTERSECTION OBSERVER)
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -46,5 +46,19 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// 5. SMOOTH SCROLL
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            window.scrollTo({
+                top: target.offsetTop - 70,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
 
 window.onload = typeWriter;
