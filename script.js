@@ -1,21 +1,4 @@
-// 1. HAMBURGER MENU TOGGLE
-const hamburger = document.getElementById('hamburger');
-const navMenu = document.getElementById('nav-menu');
-
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navMenu.classList.toggle('active');
-});
-
-// Tutup menu saat link diklik
-document.querySelectorAll('.nav-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('active');
-    });
-});
-
-// 2. TYPING EFFECT
+// 1. Efek Mengetik
 const text = "Pelayanan Haji & Umrah Kutai Barat";
 let i = 0;
 function typeWriter() {
@@ -26,7 +9,7 @@ function typeWriter() {
     }
 }
 
-// 3. NAVBAR SCROLL EFFECT
+// 2. Scroll Navbar
 window.addEventListener("scroll", () => {
     const nav = document.getElementById("navbar");
     if (window.scrollY > 50) {
@@ -36,7 +19,7 @@ window.addEventListener("scroll", () => {
     }
 });
 
-// 4. REVEAL ANIMATION (INTERSECTION OBSERVER)
+// 3. Reveal Animation on Scroll
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -47,7 +30,7 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-// 5. SMOOTH SCROLL
+// 4. Smooth Scroll
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
