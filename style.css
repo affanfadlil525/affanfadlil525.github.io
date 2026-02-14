@@ -239,6 +239,59 @@ nav.scrolled .hamburger span { background: #1a1a1a; }
     .hero h1 { font-size: 22px; }
 }
 
+/* FAQ Accordion */
+.faq-item {
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+}
+.faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 15px;
+    font-size: 16px;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    color: var(--dark);
+}
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 15px;
+    transition: 0.3s ease;
+    color: #666;
+    font-size: 14px;
+}
+.faq-item.active .faq-answer {
+    max-height: 100px;
+    padding-bottom: 15px;
+}
+.faq-item.active i { transform: rotate(180deg); }
+
+/* Back to Top Button */
+#backToTop {
+    position: fixed;
+    bottom: 30px;
+    left: 30px; /* Di kiri agar tidak tabrakan dengan WA di kanan */
+    background: var(--gold);
+    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: none; /* Muncul lewat JS */
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 999;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    border: none;
+}
+
 footer { padding: 40px; text-align: center; background: #0a0a0a; color: #666; font-size: 13px; }
+
 
 
