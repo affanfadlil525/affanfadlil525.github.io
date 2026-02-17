@@ -104,6 +104,47 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+/** 
+ * Script Update: Auto-Loop Simulation & Drag Scroll 
+ */
+
+const track = document.getElementById('galleryTrack');
+let isDown = false;
+let startX;
+let scrollLeft;
+
+// Drag to Scroll Logic
+track.addEventListener('mousedown', (e) => {
+    isDown = true;
+    track.classList.add('active');
+    startX = e.pageX - track.offsetLeft;
+    scrollLeft = track.parentElement.scrollLeft;
+});
+track.addEventListener('mouseleave', () => { isDown = false; });
+track.addEventListener('mouseup', () => { isDown = false; });
+track.addEventListener('mousemove', (e) => {
+    if(!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - track.offsetLeft;
+    const walk = (x - startX) * 2;
+    track.parentElement.scrollLeft = scrollLeft - walk;
+});
+
+// Auto-Looping Animation (Simulasi sederhana)
+function autoScroll() {
+    const wrapper = track.parentElement;
+    if (!isDown) {
+        if (wrapper.scrollLeft >= (track.scrollWidth - wrapper.offsetWidth)) {
+            wrapper.scrollLeft = 0;
+        } else {
+            wrapper.scrollLeft += 1;
+        }
+    }
+}
+setInterval(autoScroll, 30); // Kecepatan scroll otomatis
+
+// (Gunakan script Typing Effect & Scroll Reveal dari revisi sebelumnya)
+
 // FAQ Accordion Logic
 document.querySelectorAll('.faq-question').forEach(button => {
     button.addEventListener('click', () => {
@@ -161,6 +202,7 @@ backToTopBtn.addEventListener('click', () => {
 
 // Run typewriter on load
 window.onload = typeWriter;
+
 
 
 
