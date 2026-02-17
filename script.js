@@ -173,16 +173,14 @@ btnTop.addEventListener('click', () => {
 
 // --- 8. FOOTER JAM LAYANAN ---
     const footer = document.querySelector('footer');
-    if (footer && !document.querySelector('.operating-hours')) {
-        const jamLayanan = `
-            <div class="operating-hours">
-                <i class="fa-solid fa-clock"></i> <strong>Jam Layanan Kantor:</strong><br>
-                Senin - Kamis: 08:00 - 16:00 WITA<br>
-                Jumat: 08:00 - 16:30 WITA
-            </div>
-        `;
-        footer.insertAdjacentHTML('afterbegin', jamLayanan);
-    });
+const jamLayanan = `
+    <div class="operating-hours">
+        <i class="fa-solid fa-clock"></i> <strong>Jam Layanan:</strong><br>
+        Senin - Kamis: 08:00 - 16:00 WITA<br>
+        Jumat: 08:00 - 16:30 WITA
+    </div>
+`;
+footer.insertAdjacentHTML('afterbegin', jamLayanan);
 
 // Back to Top Logic
 const backToTopBtn = document.createElement('button');
@@ -204,6 +202,7 @@ backToTopBtn.addEventListener('click', () => {
 
 // Run typewriter on load
 window.onload = typeWriter;
+
 
 
 
