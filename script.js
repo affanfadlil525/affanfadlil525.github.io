@@ -112,6 +112,35 @@ document.querySelectorAll('.faq-question').forEach(button => {
     });
 });
 
+// Tombol Back to Top
+const btnTop = document.createElement('button');
+btnTop.id = "backToTop";
+btnTop.innerHTML = '<i class="fa-solid fa-arrow-up"></i>';
+document.body.appendChild(btnTop);
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 400) {
+        btnTop.style.display = 'flex';
+    } else {
+        btnTop.style.display = 'none';
+    }
+});
+
+btnTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// Penambahan Jam Layanan di Footer (Otomatis)
+const footer = document.querySelector('footer');
+const jamLayanan = `
+    <div class="operating-hours">
+        <i class="fa-solid fa-clock"></i> <strong>Jam Layanan:</strong><br>
+        Senin - Kamis: 08:00 - 16:00 WITA<br>
+        Jumat: 08:00 - 16:30 WITA
+    </div>
+`;
+footer.insertAdjacentHTML('afterbegin', jamLayanan);
+
 // Back to Top Logic
 const backToTopBtn = document.createElement('button');
 backToTopBtn.id = "backToTop";
@@ -132,5 +161,6 @@ backToTopBtn.addEventListener('click', () => {
 
 // Run typewriter on load
 window.onload = typeWriter;
+
 
 
