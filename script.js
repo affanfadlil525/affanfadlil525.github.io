@@ -4,11 +4,12 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+    
+    // --- 1. NAVBAR & HAMBURGER ---
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('nav-menu');
-    const track = document.getElementById('galleryTrack');
+    const navbar = document.getElementById('navbar');
 
-    // 1. HAMBURGER MENU TOGGLE
     if (hamburger) {
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
@@ -16,41 +17,41 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Tutup menu saat link diklik (Mobile UX)
+    // Tutup menu saat link diklik
     document.querySelectorAll('.nav-menu a').forEach(link => {
         link.addEventListener('click', () => {
-            if (hamburger) hamburger.classList.remove('active');
-            if (navMenu) navMenu.classList.remove('active');
+            hamburger?.classList.remove('active');
+            navMenu?.classList.remove('active');
         });
     });
 
-    // 2. TYPING EFFECT PADA HERO
-    const typingText = "Pelayanan Haji & Umrah Kutai Barat";
-    let charIndex = 0;
+    // --- 2. TYPING EFFECT ---
+    const text = "Pelayanan Haji & Umrah Kutai Barat";
+    let i = 0;
+    const typingTarget = document.getElementById("typing-text");
+
     function typeWriter() {
-        const target = document.getElementById("typing-text");
-        if (target && charIndex < typingText.length) {
-            target.innerHTML += typingText.charAt(charIndex);
-            charIndex++;
+        if (typingTarget && i < text.length) {
+            typingTarget.innerHTML += text.charAt(i);
+            i++;
             setTimeout(typeWriter, 100);
         }
     }
     typeWriter();
 
-    // 3. NAVBAR SCROLL & ACTIVE LINK HIGHLIGHT
+    // --- 3. SCROLL EFFECTS (Navbar & Active Link) ---
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('.nav-menu a');
-    const navbar = document.getElementById('navbar');
 
     window.addEventListener("scroll", () => {
-        // Background Navbar
+        // Navbar Scrolled
         if (window.scrollY > 50) {
-            navbar.classList.add("scrolled");
+            navbar?.classList.add("scrolled");
         } else {
-            navbar.classList.remove("scrolled");
+            navbar?.classList.remove("scrolled");
         }
 
-        // Highlighting Active Link
+        // Active Link Highlighting
         let current = "";
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
@@ -67,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 4. REVEAL ANIMATION (INTERSECTION OBSERVER)
+    // --- 4. REVEAL ANIMATION ---
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -78,11 +79,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-    // 5. GALLERY DRAG & AUTO SCROLL
+    // --- 5. FAQ ACCORDION ---
+    document.querySelectorAll('.faq-question').forEach(button => {
+        button.addEventListener('click', () => {
+            const faqItem = button.parentElement;
+            faqItem.classList.toggle('active');
+        });
+    });
+
+    // --- 6. GALLERY DRAG & AUTO SCROLL ---
+    const track = document.getElementById('galleryTrack');
     if (track) {
         let isDown = false;
-        let startX;
-        let scrollLeft;
+        let startX, scrollLeft;
 
         track.addEventListener('mousedown', (e) => {
             isDown = true;
@@ -99,10 +108,10 @@ document.addEventListener('DOMContentLoaded', () => {
             track.parentElement.scrollLeft = scrollLeft - walk;
         });
 
-        // Auto-Looping Animation
+        // Auto Scroll
         setInterval(() => {
-            const wrapper = track.parentElement;
             if (!isDown) {
+                const wrapper = track.parentElement;
                 if (wrapper.scrollLeft >= (track.scrollWidth - wrapper.offsetWidth)) {
                     wrapper.scrollLeft = 0;
                 } else {
@@ -112,26 +121,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 30);
     }
 
-    // 6. BACK TO TOP BUTTON
-    const btnTop = document.createElement('button');
-    btnTop.id = "backToTop";
-    btnTop.innerHTML = '<i class="fa-solid fa-arrow-up"></i>';
-    document.body.appendChild(btnTop);
+    // --- 7. BACK TO TOP ---
+    const backToTopBtn = document.createElement('button');
+    backToTopBtn.id = "backToTop";
+    backToTopBtn.innerHTML = '<i class="fa-solid fa-arrow-up"></i>';
+    document.body.appendChild(backToTopBtn);
 
     window.addEventListener('scroll', () => {
-        btnTop.style.display = window.scrollY > 500 ? 'flex' : 'none';
+        backToTopBtn.style.display = window.scrollY > 500 ? 'flex' : 'none';
     });
 
-    btnTop.addEventListener('click', () => {
+    backToTopBtn.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // 7. DYNAMIC FOOTER CONTENT (Jam Layanan)
+    // --- 8. FOOTER JAM LAYANAN ---
     const footer = document.querySelector('footer');
-    if (footer) {
+    if (footer && !document.querySelector('.operating-hours')) {
         const jamLayanan = `
             <div class="operating-hours">
-                <i class="fa-solid fa-clock"></i> <strong>Jam Layanan:</strong><br>
+                <i class="fa-solid fa-clock"></i> <strong>Jam Layanan Kantor:</strong><br>
                 Senin - Kamis: 08:00 - 16:00 WITA<br>
                 Jumat: 08:00 - 16:30 WITA
             </div>
