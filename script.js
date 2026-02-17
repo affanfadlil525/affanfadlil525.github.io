@@ -1,92 +1,165 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const hamburger = document.getElementById('hamburger');
-    const navMenu = document.getElementById('nav-menu');
+/**
+ * Kementerian Haji & Umrah Kab. Kutai Barat
+ * Final Refined Script
+ */
 
-    // 1. Hamburger Menu
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navMenu.classList.toggle('active');
-    });
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('nav-menu');
 
-    // Close menu when clicking link
-    document.querySelectorAll('.nav-menu a').forEach(link => {
-        link.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-        });
-    });
-
-    // 2. Typing Effect
-    const typingTarget = document.getElementById("typing-text");
-    const text = "Pelayanan Haji & Umrah Kutai Barat";
-    let i = 0;
-    function typeWriter() {
-        if (i < text.length) {
-            typingTarget.innerHTML += text.charAt(i);
-            i++;
-            setTimeout(typeWriter, 100);
-        }
-    }
-    typeWriter();
-
-    // 3. Navbar & Back to Top Scroll Logic
-    const btnTop = document.createElement('button');
-    btnTop.id = "backToTop";
-    btnTop.innerHTML = '<i class="fa-solid fa-arrow-up"></i>';
-    document.body.appendChild(btnTop);
-
-    window.addEventListener('scroll', () => {
-        const nav = document.getElementById('navbar');
-        // Navbar change
-        if (window.scrollY > 50) nav.classList.add('scrolled');
-        else nav.classList.remove('scrolled');
-
-        // Back to top visibility
-        if (window.scrollY > 500) btnTop.style.display = 'flex';
-        else btnTop.style.display = 'none';
-    });
-
-    btnTop.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // 4. Reveal Animation
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('appear');
-        });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-    // 5. Gallery Auto Scroll Logic
-    const track = document.getElementById('galleryTrack');
-    let isDown = false;
-    let startX, scrollLeft;
-
-    track.addEventListener('mousedown', (e) => {
-        isDown = true;
-        startX = e.pageX - track.offsetLeft;
-        scrollLeft = track.parentElement.scrollLeft;
-    });
-    track.addEventListener('mouseleave', () => isDown = false);
-    track.addEventListener('mouseup', () => isDown = false);
-    track.addEventListener('mousemove', (e) => {
-        if(!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - track.offsetLeft;
-        const walk = (x - startX) * 2;
-        track.parentElement.scrollLeft = scrollLeft - walk;
-    });
-
-    setInterval(() => {
-        if (!isDown) {
-            const wrapper = track.parentElement;
-            if (wrapper.scrollLeft >= (track.scrollWidth - wrapper.offsetWidth)) {
-                wrapper.scrollLeft = 0;
-            } else {
-                wrapper.scrollLeft += 1;
-            }
-        }
-    }, 30);
+// Membuka & Menutup Menu Mobile
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navMenu.classList.toggle('active');
 });
+
+// Tutup menu saat link diklik (Agar tidak menutupi saat scroll ke section)
+document.querySelectorAll('.nav-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+    });
+});
+
+// Efek Scroll Navbar
+window.addEventListener('scroll', () => {
+    const navbar = document.getElementById('navbar');
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+});
+
+// 2. TYPING EFFECT PADA HERO
+const text = "Pelayanan Haji & Umrah Kutai Barat";
+let i = 0;
+function typeWriter() {
+    if (i < text.length) {
+        document.getElementById("typing-text").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 100);
+    }
+}
+
+// 3. NAVBAR SCROLL EFFECT & ACTIVE LINK HIGHLIGHT
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('.nav-menu a');
+
+window.addEventListener("scroll", () => {
+    // Background Navbar
+    const nav = document.getElementById("navbar");
+    if (window.scrollY > 50) {
+        nav.classList.add("scrolled");
+    } else {
+        nav.classList.remove("scrolled");
+    }
+
+    // Highlighting Active Link
+    let current = "";
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= (sectionTop - 150)) {
+            current = section.getAttribute('id');
+        }
+    });
+
+    navLinks.forEach(a => {
+        a.classList.remove("active-link");
+        if (a.getAttribute('href').includes(current)) {
+            a.classList.add("active-link");
+        }
+    });
+});
+
+// 4. REVEAL ANIMATION (INTERSECTION OBSERVER)
+const observerOptions = {
+    threshold: 0.15
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("appear");
+        }
+    });
+}, observerOptions);
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// 5. SMOOTH SCROLLING WITH OFFSET
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if (targetId === "#") return;
+        
+        const target = document.querySelector(targetId);
+        if (target) {
+            window.scrollTo({
+                top: target.offsetTop - 70,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+// FAQ Accordion Logic
+document.querySelectorAll('.faq-question').forEach(button => {
+    button.addEventListener('click', () => {
+        const faqItem = button.parentElement;
+        faqItem.classList.toggle('active');
+    });
+});
+
+// Tombol Back to Top
+const btnTop = document.createElement('button');
+btnTop.id = "backToTop";
+btnTop.innerHTML = '<i class="fa-solid fa-arrow-up"></i>';
+document.body.appendChild(btnTop);
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 400) {
+        btnTop.style.display = 'flex';
+    } else {
+        btnTop.style.display = 'none';
+    }
+});
+
+btnTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// Penambahan Jam Layanan di Footer (Otomatis)
+const footer = document.querySelector('footer');
+const jamLayanan = `
+    <div class="operating-hours">
+        <i class="fa-solid fa-clock"></i> <strong>Jam Layanan:</strong><br>
+        Senin - Kamis: 08:00 - 16:00 WITA<br>
+        Jumat: 08:00 - 16:30 WITA
+    </div>
+`;
+footer.insertAdjacentHTML('afterbegin', jamLayanan);
+
+// Back to Top Logic
+const backToTopBtn = document.createElement('button');
+backToTopBtn.id = "backToTop";
+backToTopBtn.innerHTML = '<i class="fa-solid fa-arrow-up"></i>';
+document.body.appendChild(backToTopBtn);
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 500) {
+        backToTopBtn.style.display = 'flex';
+    } else {
+        backToTopBtn.style.display = 'none';
+    }
+});
+
+backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// Run typewriter on load
+window.onload = typeWriter;
+
+
