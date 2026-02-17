@@ -8,16 +8,6 @@
     --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-/* --- VARIABLES --- */
-:root {
-    --gold: #c5a059;
-    --gold-dark: #a68545;
-    --dark: #1a1a1a;
-    --white: #ffffff;
-    --light-bg: #f8f9fa;
-    --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
 html { scroll-behavior: smooth; }
 body { background: var(--white); color: var(--dark); overflow-x: hidden; }
@@ -116,9 +106,6 @@ nav.scrolled .nav-menu a { color: var(--dark); }
 .fade-in.appear { opacity: 1; transform: translateY(0); }
 footer { padding: 40px; text-align: center; background: #0a0a0a; color: #666; font-size: 13px; }
 
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
-html { scroll-behavior: smooth; }
-body { background: var(--white); color: var(--dark); overflow-x: hidden; }
 
 /* Warna Tambahan */
 :root {
@@ -516,6 +503,7 @@ nav.scrolled .hamburger span { background: #1a1a1a; }
 }
 
 footer { padding: 40px; text-align: center; background: #0a0a0a; color: #666; font-size: 13px; }
+
 
 
 
