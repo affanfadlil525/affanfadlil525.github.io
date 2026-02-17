@@ -12,6 +12,56 @@
 html { scroll-behavior: smooth; }
 body { background: var(--white); color: var(--dark); overflow-x: hidden; }
 
+/* Warna Tambahan */
+:root {
+    --gold-gradient: linear-gradient(135deg, #c5a059 0%, #a68545 100%);
+}
+
+.bg-gold-gradient { background: var(--gold-gradient); }
+
+/* Timeline UI */
+.timeline { position: relative; max-width: 800px; margin: 0 auto; padding: 20px 0; }
+.timeline::before { content: ''; position: absolute; left: 30px; top: 0; width: 2px; height: 100%; background: #ddd; }
+
+.timeline-item { position: relative; margin-bottom: 40px; padding-left: 80px; }
+.timeline-number { 
+    position: absolute; left: 10px; top: 0; width: 40px; height: 40px; 
+    background: var(--gold); color: white; border-radius: 50%; 
+    display: flex; align-items: center; justify-content: center; font-weight: 800;
+    z-index: 2; box-shadow: 0 0 0 8px white;
+}
+
+.timeline-text h3 { color: var(--gold-dark); margin-bottom: 5px; font-size: 1.1rem; }
+.timeline-text p { font-size: 0.95rem; color: #666; }
+
+/* Button White */
+.btn-white {
+    background: white; color: var(--gold-dark); padding: 12px 30px; 
+    border-radius: 50px; text-decoration: none; font-weight: 700;
+    display: inline-block; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.btn-white:hover { transform: scale(1.05); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
+
+/* Floating Action Button */
+#backToTop {
+    position: fixed; bottom: 30px; right: 30px; background: var(--gold);
+    color: white; width: 45px; height: 45px; border-radius: 50%;
+    display: none; align-items: center; justify-content: center;
+    cursor: pointer; z-index: 1000; border: none; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* Jam Layanan Footer */
+.operating-hours { 
+    margin: 20px 0; padding: 15px; border: 1px dashed rgba(255,255,255,0.3); 
+    border-radius: 10px; display: inline-block; font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .timeline::before { left: 20px; }
+    .timeline-item { padding-left: 60px; }
+    .timeline-number { left: 0; width: 35px; height: 35px; }
+}
+
 /* --- NAVBAR DASAR (BERLAKU UNTUK PC) --- */
 nav {
     position: fixed;
@@ -311,6 +361,7 @@ nav.scrolled .hamburger span { background: #1a1a1a; }
 }
 
 footer { padding: 40px; text-align: center; background: #0a0a0a; color: #666; font-size: 13px; }
+
 
 
 
