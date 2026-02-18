@@ -274,7 +274,7 @@ nav.scrolled .hamburger span { background: #1a1a1a; }
 /* --- HERO SECTION --- */
 .hero { position: relative; height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; color: var(--white); background: url('https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?q=80&w=2070&auto=format&fit=crop') center/cover fixed; }
 .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.4), rgba(0,0,0,0.8)); }
-.hero-content { position: relative; z-index: 1; max-width: 850px; padding: 20px; }
+.hero-content { position: relative; z-index: 2; max-width: 850px; padding: 20px; }
 .badge { background: var(--gold); padding: 6px 16px; border-radius: 20px; font-size: 11px; text-transform: uppercase; font-weight: 700; margin-bottom: 20px; display: inline-block; }
 .hero h1 { font-size: clamp(2rem, 5vw, 4rem); font-weight: 800; margin-bottom: 20px; line-height: 1.1; }
 
@@ -408,6 +408,7 @@ nav.scrolled .hamburger span { background: #1a1a1a; }
 }
 
 footer { padding: 40px; text-align: center; background: #0a0a0a; color: #666; font-size: 13px; }
+
 
 
 
