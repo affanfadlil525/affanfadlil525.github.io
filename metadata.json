@@ -1,5 +1,5 @@
 {
-  "name": "StegaScale - Advanced LSB Steganography",
-  "description": "Increase message capacity in images using Advanced Least Significant Bit (LSB) and dynamic image scaling.",
-  "requestFramePermissions": []
+  "name": "Sistem Digitalisasi Dokumen Haji Kutai Barat",
+  "description": "Aplikasi pemindaian dokumen pendaftaran, pembatalan, dan pelimpahan jamaah haji untuk Kantor Kemenag Kabupaten Kutai Barat menggunakan AI.",
+  "requestFramePermissions": ["camera"]
 }
