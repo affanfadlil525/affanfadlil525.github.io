@@ -1,5 +1,5 @@
 {
   "name": "Sistem Digitalisasi Dokumen Haji Kutai Barat",
-  "description": "Aplikasi pemindaian dokumen pendaftaran, pembatalan, dan pelimpahan jamaah haji untuk Kantor Kemenag Kabupaten Kutai Barat menggunakan AI.",
+  "description": "Aplikasi pemindaian dokumen pendaftaran, pembatalan, dan pelimpahan jamaah haji untuk Kantor Kemenhaj Kabupaten Kutai Barat.",
   "requestFramePermissions": ["camera"]
 }
